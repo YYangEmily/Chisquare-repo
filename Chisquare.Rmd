@@ -9,3 +9,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Introduction: Goodness of fit tests report how well observed data matches with expected data. There are many types of goodness of fit test and each test is used to draw different conclusions. Kolmogorov-Smirnov test determines if the observed data matches a normally distributed population. Anderson-Darling test is derived from the Kolmogorov-Smirnov test and is more sensitive to the distribution edges. 
+
+Chi-Squared Test: Also known as the Pearson's test. Chi-squared allows you to determine if there is a relationship between categorical variables. It is only usable for discrete distributions  
+
+Null Hypothesis: The observed data is from the same population a the original. 
+Alternate Hypothesis: The observed data is from a different population to the original. 
+
+
+
+
+
+Sources: https://en.wikipedia.org/wiki/Goodness_of_fit
