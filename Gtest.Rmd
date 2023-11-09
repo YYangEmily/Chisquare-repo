@@ -32,12 +32,6 @@ Alternate Hypothesis: The observed data doesn't have the same porportions as the
 
 ## Running the Test
 
-Formula <br>
-
-# G=2 * Σ[O * ln(O/E)]
-
-O = Observed
-E = Expected
 ``` {r Generating Data, include=FALSE}
 
 set.seed(1)
@@ -49,7 +43,15 @@ table(Flower.size) # Count how many of each size
 Flower.species <- sample(x = c("Siberian", "Japanese", "Dutch", "Bearded"), prob= c(.25, .25, 0.25, 0.25), size = 1200, replace = TRUE)
 table(Flower.species) # Count how many of each species
 
+Data <- cbind(Flower.color, Flower.size, Flower.species)
+head(Data)
 ```
+Formula <br>
+
+# G=2 * Σ[O * ln(O/E)]
+
+O = Observed
+E = Expected
 
 I was out in the field and collected data about 1200 Irises. I want to know if there is proportionally equal amounts of each flower color. 
 
