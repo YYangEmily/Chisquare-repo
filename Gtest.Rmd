@@ -1,0 +1,39 @@
+---
+title: "G-test"
+author: "Emily Yang"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## G–test of goodness-of-fit
+
+Like the Chi-squared test in Module 14 the G test allows you to determine if there is a significant difference in proportions of a categorical variable to the theoretical expectation. Chi-squared test give approximately the same results as G test but you can perform more elaborate statistical analyses with G test results. Downside is that less people are familar with the G test compared to the Chi-squared test. You cannot use both and pick the one that gives you a better result. Pick one and stick with it. 
+
+Both G test and Chi-squared Test data needs to fulfill certain assumptions: 
+
+1. Random Sample <br>
+2. Independence between samples <br>
+3. Variable must be proportional or categorical <br>
+4. Mutually exclusive categories <br>
+5. Variables must have 2 or more options <br>
+
+
+You should use the G test over the Chi-squared Test if 
+
+1. There are more than 1000 values in total.
+2. There are outliers in the data
+
+Null Hypothesis: The observed data has the same porportions as the expected theoretical population. 
+Alternate Hypothesis: The observed data doesn't have the same porportions as the expected theoretical population. 
+
+## Running the Test
+
+Formula <br>
+
+# G=2 * Σ[O * ln(O/E)]
+
+I have 
