@@ -36,4 +36,43 @@ Formula <br>
 
 # G=2 * Σ[O * ln(O/E)]
 
-I have 
+O = Observed
+E = Expected
+``` {r Generating Data, include=FALSE}
+
+set.seed(1)
+Flower.color <- sample(x = c("purple", "white", "orange", "blue"), prob= c(.5, .35, 0.05, 0.1), size = 1200, replace = TRUE)
+
+Flower.size <- sample(x = c("Large", "Small"), prob= c(0.5, 0.5), size = 1200, replace = TRUE)
+table(Flower.size) # Count how many of each size
+
+Flower.species <- sample(x = c("Siberian", "Japanese", "Dutch", "Bearded"), prob= c(.25, .25, 0.25, 0.25), size = 1200, replace = TRUE)
+table(Flower.species) # Count how many of each species
+
+```
+
+I was out in the field and collected data about 1200 Irises. I want to know if there is proportionally equal amounts of each flower color. 
+
+```{r Tabulating Data}
+
+table(Flower.color) # Count how many of each color
+
+q <- 2 * (121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300))
+
+q
+
+pchisq(q=253.1, df=3, lower.tail = FALSE) # Finding the p-value
+```
+We got an output of 253.1 and the degree of freedom is options-1 and calculated a p-value of 1.4e-54 which is below the critical p-value = 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises I observed are not equally distributed. 
+
+```{r Coding}
+library(DescTools)
+
+#perform the G-test 
+GTest(x = c(121, 59, 628, 392), #observed values
+      p = c(1/4, 1/4, 1/4, 1/4), #expected proportions
+      correct = "none") 
+
+```
+
+Once again the p-value is below 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises I observed are not equally distributed. 

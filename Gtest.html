@@ -392,7 +392,39 @@ population.</p>
 </div>
 <div id="g2-σo-lnoe" class="section level1">
 <h1>G=2 * Σ[O * ln(O/E)]</h1>
-<p>I have</p>
+<p>O = Observed E = Expected</p>
+<p>I was out in the field and collected data about 1200 Irises. I want
+to know if there is proportionally equal amounts of each flower
+color.</p>
+<pre class="r"><code>table(Flower.color) # Count how many of each color</code></pre>
+<pre><code>## Flower.color
+##   blue orange purple  white 
+##    121     59    628    392</code></pre>
+<pre class="r"><code>q &lt;- 2 * (121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300))
+
+q</code></pre>
+<pre><code>## [1] 253.1092</code></pre>
+<pre class="r"><code>pchisq(q=253.1, df=3, lower.tail = FALSE) # Finding the p-value</code></pre>
+<pre><code>## [1] 1.397415e-54</code></pre>
+<p>We got an output of 253.1 and the degree of freedom is options-1 and
+calculated a p-value of 1.4e-54 which is below the critical p-value =
+0.05. We can reject the null hypothesis and conclude that the flower
+color proportions of the Irises I observed are not equally
+distributed.</p>
+<pre class="r"><code>library(DescTools)
+
+#perform the G-test 
+GTest(x = c(121, 59, 628, 392), #observed values
+      p = c(1/4, 1/4, 1/4, 1/4), #expected proportions
+      correct = &quot;none&quot;) </code></pre>
+<pre><code>## 
+##  Log likelihood ratio (G-test) goodness of fit test
+## 
+## data:  c(121, 59, 628, 392)
+## G = 725.95, X-squared df = 3, p-value &lt; 2.2e-16</code></pre>
+<p>Once again the p-value is below 0.05. We can reject the null
+hypothesis and conclude that the flower color proportions of the Irises
+I observed are not equally distributed.</p>
 </div>
 
 
