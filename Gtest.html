@@ -11,7 +11,7 @@
 
 <meta name="author" content="Emily Yang" />
 
-<meta name="date" content="2023-11-09" />
+<meta name="date" content="2023-11-14" />
 
 <title>G-test</title>
 
@@ -352,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">G-test</h1>
 <h4 class="author">Emily Yang</h4>
-<h4 class="date">2023-11-09</h4>
+<h4 class="date">2023-11-14</h4>
 
 </div>
 
@@ -400,12 +400,12 @@ color.</p>
 <pre><code>## Flower.color
 ##   blue orange purple  white 
 ##    121     59    628    392</code></pre>
-<pre class="r"><code>q &lt;- 2 * (121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300))
+<pre class="r"><code>G &lt;- 2 * ((121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300)))
 
-q</code></pre>
-<pre><code>## [1] 253.1092</code></pre>
-<pre class="r"><code>pchisq(q=253.1, df=3, lower.tail = FALSE) # Finding the p-value</code></pre>
-<pre><code>## [1] 1.397415e-54</code></pre>
+G</code></pre>
+<pre><code>## [1] 725.9525</code></pre>
+<pre class="r"><code>pchisq(725.9525, df=3, lower.tail = FALSE) # Finding the p-value</code></pre>
+<pre><code>## [1] 4.947761e-157</code></pre>
 <p>We got an output of 253.1 and the degree of freedom is options-1 and
 calculated a p-value of 1.4e-54 which is below the critical p-value =
 0.05. We can reject the null hypothesis and conclude that the flower

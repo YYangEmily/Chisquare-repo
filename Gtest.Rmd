@@ -59,11 +59,11 @@ I was out in the field and collected data about 1200 Irises. I want to know if t
 
 table(Flower.color) # Count how many of each color
 
-q <- 2 * (121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300))
+G <- 2 * ((121 * log(121/300)) + (59 * log(59/300)) + (628 * log(628/300)) + (392 * log(392/300)))
 
-q
+G
 
-pchisq(q=253.1, df=3, lower.tail = FALSE) # Finding the p-value
+pchisq(725.9525, df=3, lower.tail = FALSE) # Finding the p-value
 ```
 We got an output of 253.1 and the degree of freedom is options-1 and calculated a p-value of 1.4e-54 which is below the critical p-value = 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises I observed are not equally distributed. 
 
