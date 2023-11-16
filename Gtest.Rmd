@@ -38,13 +38,15 @@ set.seed(1)
 Flower.color <- sample(x = c("purple", "white", "orange", "blue"), prob= c(.5, .35, 0.05, 0.1), size = 1200, replace = TRUE)
 
 Flower.size <- sample(x = c("Large", "Small"), prob= c(0.5, 0.5), size = 1200, replace = TRUE)
-table(Flower.size) # Count how many of each size
+
 
 Flower.species <- sample(x = c("Siberian", "Japanese", "Dutch", "Bearded"), prob= c(.25, .25, 0.25, 0.25), size = 1200, replace = TRUE)
-table(Flower.species) # Count how many of each species
 
-Data <- cbind(Flower.color, Flower.size, Flower.species)
+Flower.location <- sample(x = c("North", "East", "South", "West"), prob= c(.2, .30, 0.30, 0.2), size = 1200, replace = TRUE)
+
+Data <- cbind(Flower.color, Flower.size, Flower.species, Flower.location)
 head(Data)
+write.csv(Data, "C:\\Users\\Emily\\Documents\\Github\\Chisquare-repo\\my_products.csv", row.names=TRUE)
 ```
 Formula <br>
 
@@ -53,7 +55,9 @@ Formula <br>
 O = Observed
 E = Expected
 
-I was out in the field and collected data about 1200 Irises. I want to know if there is proportionally equal amounts of each flower color. 
+I was out in the field and collected data about 1200 Irises. I noted the color, size, species, and location of each flower. I want to know if there is proportionally equal amounts of each flower color. 
+
+<center><img src="https://bouqs.com/blog/iris-meaning-and-symbolism/"></center>
 
 ```{r Tabulating Data}
 
@@ -65,7 +69,7 @@ G
 
 pchisq(725.9525, df=3, lower.tail = FALSE) # Finding the p-value
 ```
-We got an output of 253.1 and the degree of freedom is options-1 and calculated a p-value of 1.4e-54 which is below the critical p-value = 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises I observed are not equally distributed. 
+We got an output of 725.95 and the degree of freedom is options-1 and calculated a p-value of 4.9e-157 which is below the critical p-value = 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises observed are not equally distributed. 
 
 ```{r Coding}
 library(DescTools)
@@ -74,7 +78,6 @@ library(DescTools)
 GTest(x = c(121, 59, 628, 392), #observed values
       p = c(1/4, 1/4, 1/4, 1/4), #expected proportions
       correct = "none") 
-
 ```
 
 Once again the p-value is below 0.05. We can reject the null hypothesis and conclude that the flower color proportions of the Irises I observed are not equally distributed. 
@@ -82,7 +85,7 @@ Once again the p-value is below 0.05. We can reject the null hypothesis and conc
 
 ## Challenges
 
-Go through the same process with Flower.size and Flower.species.
+Go through the same process with Flower.size, Flower.location and Flower.species.
 
 ### Sources
 https://www.statology.org/g-test/ <br>
